@@ -1,0 +1,19 @@
+<div *ngIf="ad" class="content">
+    <div>
+        <button mat-raised-button (click)="back()" class="green">Powrót</button>
+        <br /><br />
+        <div class="offseted">
+            <p>Id: {{ ad.id }}</p>
+            <p>Tytuł: {{ ad.title }}</p>
+            <p>Opis: {{ ad.description }}</p>
+            <p>Scieżka zjdęcia: {{ ad.imagePath }}</p>
+            <div *ngIf="ad.tags.length">
+                <p>Tagi: </p>
+                <ul>
+                    <li *ngFor="let tag of ad.tags">{{ tag.value }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <img src="https://miro.medium.com/max/2400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg" >
+</div>

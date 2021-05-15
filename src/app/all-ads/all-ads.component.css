@@ -1,0 +1,29 @@
+.header{
+    text-align: center;
+    font-size:xx-large;
+    margin: 10px 0 50px 0;
+}
+
+th, td{
+    width: 240px;
+    padding: 10px;
+    text-align: center;
+    font-size: large;
+}
+
+button{
+    margin: 3px;
+    width: 70px;
+}
+
+.green{
+    background-color: #00CCAA;
+}
+
+.blue{
+    background-color: #54DEFD;
+}
+
+.red{
+    background-color: #FF5C33;
+}

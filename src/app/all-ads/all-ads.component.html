@@ -1,5 +1,20 @@
-<h2>Wszystkie reklamy:</h2>
+<p class="header">Wszystkie reklamy:</p>
 
-<div *ngFor="let ad of ads">
-    {{ad.title}}
-</div>
+<table>
+    <tr>
+        <th>Numer</th>
+        <th>Tytuł</th>
+        <th>Opis</th>
+        <th>Akcje</th>
+    </tr>
+    <tr *ngFor="let ad of ads">
+        <td>{{ad.title}}</td>
+        <td>{{ad.description}}</td>
+        <td>{{ad.imagePath}}</td>
+        <td>
+            <a class="green" mat-raised-button routerLink='/details/{{ad.id}}'>Detale</a>
+            <button class="blue" mat-raised-button>Edytuj</button>
+            <button class="red" mat-raised-button>Usuń</button>
+        </td>
+    </tr>
+</table>

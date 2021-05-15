@@ -1,0 +1,17 @@
+img {
+    max-width: 400px;
+}
+
+.content {
+ display: flex;
+ justify-content: space-between;
+ font-size: larger;
+}
+
+.green{
+    background-color: #00BD9D;
+}
+
+.offseted{
+    margin-left: 10px;
+}

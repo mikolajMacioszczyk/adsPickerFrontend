@@ -12,13 +12,15 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { RouterModule } from '@angular/router';
 import { AdsListComponent } from './ads-list/ads-list.component';
 import { AllAdsComponent } from './all-ads/all-ads.component';
+import { DetailsComponent } from './details/details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
     AdsListComponent,
-    AllAdsComponent
+    AllAdsComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,
