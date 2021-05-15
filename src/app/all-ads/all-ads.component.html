@@ -14,7 +14,7 @@
         <td>
             <a class="green" mat-raised-button routerLink='/details/{{ad.id}}'>Detale</a>
             <button class="blue" mat-raised-button>Edytuj</button>
-            <button class="red" mat-raised-button>Usuń</button>
+            <button class="red" mat-raised-button (click)='removeAd(ad.id)'>Usuń</button>
         </td>
     </tr>
 </table>
