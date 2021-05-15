@@ -9,18 +9,24 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 
 import { NavigationComponent } from './navigation/navigation.component';
+import { RouterModule } from '@angular/router';
+import { AdsListComponent } from './ads-list/ads-list.component';
+import { AllAdsComponent } from './all-ads/all-ads.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavigationComponent
+    NavigationComponent,
+    AdsListComponent,
+    AllAdsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

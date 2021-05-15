@@ -3,4 +3,5 @@
     max-width: 1320px;
     margin: auto;
     background-color: #edf6f9;
+    display: flex;
 }
