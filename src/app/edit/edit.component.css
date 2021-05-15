@@ -1,0 +1,29 @@
+img {
+    max-width: 400px;
+}
+
+.blue{
+    background-color: #54DEFD;
+}
+
+.content {
+ display: flex;
+ justify-content: space-between;
+ font-size: larger;
+}
+
+.green{
+    background-color: #00BD9D;
+}
+
+.input-panel{
+    margin-bottom: 12px;
+}
+
+.mat-raised-button {
+    margin-right: 15px;
+}
+
+.offseted{
+    margin-left: 10px;
+}

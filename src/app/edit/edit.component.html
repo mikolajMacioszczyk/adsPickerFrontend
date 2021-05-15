@@ -1,0 +1,32 @@
+<div *ngIf="ad" class="content">
+    <div>
+        <div>
+            <button mat-raised-button (click)="back()" class="green">Powrót</button>
+            <button mat-raised-button (click)="save()" class="blue">Zapisz</button>
+        </div>
+        <br /><br />
+        <div class="offseted">
+            <div class="input-panel">
+                <label for="adId">Id: </label>
+                <input id="adId" [(ngModel)]="ad.id">
+            </div>
+            <div class="input-panel">
+                <label for="title">Tytuł: </label>
+                <input id="title" [(ngModel)]="ad.title">
+            </div>
+            <div class="input-panel">
+                <label for="description">Opis: </label>
+                <input id="description" [(ngModel)]="ad.description">
+            </div>
+            <div class="input-panel">
+                <label for="imagePath">Ścieżka zdjęcia: </label>
+                <input id="imagePath" [(ngModel)]="ad.imagePath">
+            </div>
+            <p>Tagi: </p>
+            <ul>
+                <li *ngFor="let tag of ad.tags">{{ tag.value }}</li>
+            </ul>
+        </div>
+    </div>
+    <img src="https://miro.medium.com/max/2400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg" >
+</div>
