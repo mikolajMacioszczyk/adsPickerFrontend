@@ -1,0 +1,37 @@
+.example-form-field {
+    width: 400px;
+    margin: 0 25px 20px 25px;
+}
+
+.header
+{
+    font-size: x-large;
+}
+
+.green {
+    background-color: #00BD9D;
+    color: white;
+}
+
+th, td{
+    width: 240px;
+    padding: 10px;
+    text-align: center;
+    font-size: large;
+    border-bottom: 1px solid #00CCAA;
+}
+
+.small-button{
+    margin: 3px;
+    width: 70px;
+}
+
+.blue{
+    background-color: #54DEFD;
+}
+
+.custom-select {
+    width: 130px;
+    margin-right: 20px;
+    font-size: small;
+}

@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
@@ -16,6 +16,8 @@ import { AllAdsComponent } from './all-ads/all-ads.component';
 import { DetailsComponent } from './details/details.component';
 import { EditComponent } from './edit/edit.component';
 import { CreateComponent } from './create/create.component';
+import { SearchByQueryComponent } from './search-by-query/search-by-query.component';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { CreateComponent } from './create/create.component';
     AllAdsComponent,
     DetailsComponent,
     EditComponent,
-    CreateComponent
+    CreateComponent,
+    SearchByQueryComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,9 +35,11 @@ import { CreateComponent } from './create/create.component';
     BrowserAnimationsModule,
     MatButtonModule,
     MatInputModule,
+    MatSelectModule,
     RouterModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
