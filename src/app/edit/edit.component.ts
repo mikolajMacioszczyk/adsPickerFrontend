@@ -18,6 +18,7 @@ export class EditComponent implements OnInit {
   newTag: Tag = {id: 0, value: '', useCount: 0};
   image?: File;
   message: string = '';
+  private nextId: number = 0;
 
   constructor(
     private adsService: AdsService, 
@@ -39,6 +40,9 @@ export class EditComponent implements OnInit {
       const copyTags: Tag[] = [];
       ad.tags.forEach(tag => copyTags.push({id: tag.id, value: tag.value, useCount: tag.useCount}));
       this.ad = {id: ad.id, title: ad.title, description: ad.description, imagePath: ad.imagePath, tags: copyTags};
+      if (this.ad?.tags){
+        this.nextId = Math.max.apply(Math, this.ad?.tags.map(function(t){return t.id;}))
+      }
     });
   }
 
@@ -49,7 +53,8 @@ export class EditComponent implements OnInit {
   adTag(): void{
     if (this.newTag.value){
       this.ad?.tags.push(this.newTag);
-      this.newTag = {id: 0, value: '', useCount: 0};
+      this.nextId = this.nextId + 1;
+      this.newTag = {id: this.nextId, value: '', useCount: 0};
     }
   }
 

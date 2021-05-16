@@ -28,13 +28,14 @@ export class AdsService {
 
   updateAd(adId: number, updated: Ad): Observable<Ad>{
     const url = this.baseUrl + "update?id=" + adId;
-    const body = JSON.stringify(updated);
     const headers = { 'content-type': 'application/json'} 
     return this.http.post<Ad>(url, updated, {headers: headers});
   }
 
   createAd(created: Ad): Observable<boolean>{
-    return of(true);
+    const url = this.baseUrl + "create";
+    const headers = { 'content-type': 'application/json'} 
+    return this.http.post<boolean>(url, created, {headers: headers});
   }
 
   removeAd(adId: number): Observable<boolean>{

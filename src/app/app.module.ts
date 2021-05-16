@@ -15,6 +15,7 @@ import { RouterModule } from '@angular/router';
 import { AllAdsComponent } from './all-ads/all-ads.component';
 import { DetailsComponent } from './details/details.component';
 import { EditComponent } from './edit/edit.component';
+import { CreateComponent } from './create/create.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { EditComponent } from './edit/edit.component';
     NavigationComponent,
     AllAdsComponent,
     DetailsComponent,
-    EditComponent
+    EditComponent,
+    CreateComponent
   ],
   imports: [
     BrowserModule,

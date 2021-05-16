@@ -8,9 +8,9 @@
         <th>Akcje</th>
     </tr>
     <tr *ngFor="let ad of ads">
+        <td>{{ad.id}}</td>
         <td>{{ad.title}}</td>
         <td>{{ad.description}}</td>
-        <td>{{ad.imagePath}}</td>
         <td>
             <a class="green" mat-raised-button routerLink='/details/{{ad.id}}'>Detale</a>
             <button class="blue" mat-raised-button routerLink='/edit/{{ad.id}}'>Edytuj</button>
