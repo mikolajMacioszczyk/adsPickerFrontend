@@ -23,14 +23,16 @@ export class AllAdsComponent implements OnInit {
   }
 
   removeAd(adId: number): void{
-    this.adsService.deleteAd(adId)
-    .subscribe(isDeleted => {
-      if (isDeleted) {
-        this.removeAdFromList(adId)
-      } else {
-        this.loggerService.adLog(`AllAdsComponent: cannot remove ad with id=${adId}`);
-      }
-      })
+    this.adsService.removeAd(adId)
+    .subscribe(isRemoved => this.afterRemove(isRemoved, adId));
+  }
+
+  private afterRemove(isRemoved: boolean, adId: number): void {
+    if (isRemoved) {
+      this.removeAdFromList(adId)
+    } else {
+      this.loggerService.adLog(`AllAdsComponent: cannot remove ad with id=${adId}`);
+    }
   }
 
   private removeAdFromList(removedId: number){

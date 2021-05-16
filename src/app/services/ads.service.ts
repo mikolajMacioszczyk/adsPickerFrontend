@@ -37,7 +37,8 @@ export class AdsService {
     return of(true);
   }
 
-  deleteAd(adId: number): Observable<boolean>{
-    return of(true);
+  removeAd(adId: number): Observable<boolean>{
+    const url = this.baseUrl + "remove?id=" + adId;
+    return this.http.post<boolean>(url, {});
   }
 }

@@ -9,6 +9,7 @@ th, td{
     padding: 10px;
     text-align: center;
     font-size: large;
+    border-bottom: 1px solid #00CCAA;
 }
 
 button{
@@ -16,12 +17,12 @@ button{
     width: 70px;
 }
 
-.green{
-    background-color: #00CCAA;
-}
-
 .blue{
     background-color: #54DEFD;
+}
+
+.green{
+    background-color: #00CCAA;
 }
 
 .red{
