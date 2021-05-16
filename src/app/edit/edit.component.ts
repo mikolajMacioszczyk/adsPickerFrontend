@@ -7,6 +7,12 @@ import { Tag } from '../models/tag';
 import { LoggerService } from '../services/logger.service';
 import { ImageService } from '../services/image.service';
 
+
+class ImageSnippet {
+  constructor(public src: string, public file: File) {}
+}
+
+
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
@@ -14,7 +20,7 @@ import { ImageService } from '../services/image.service';
 })
 export class EditComponent implements OnInit {
   original?: Ad;
-  ad?: Ad;
+  ad: Ad = {id: 0, title: '', description: '', imagePath: '', tags: []};
   newTag: Tag = {id: 0, value: '', useCount: 0};
   image?: File;
   message: string = '';
@@ -66,14 +72,28 @@ export class EditComponent implements OnInit {
     }
   }
 
-  save(): void{
-    if (this.ad){
-      if (this.image){
-        this.ad.imagePath = this.imageService.uploadImage(this.image)
-      }
-      this.adsService.updateAd(this.ad.id, this.ad)
-      .subscribe(updated => this.afterUpdate(updated))
+  save(imageInput: any): void{
+    if (imageInput.files.length){
+      const file: File = imageInput.files[0];
+      const reader = new FileReader();
+
+      reader.addEventListener('load', (event: any) => {
+        this.imageService.uploadImage(file)
+        .subscribe(path => {
+          this.ad.imagePath = path;
+          this.updateAd();
+        })
+      });
+
+      reader.readAsDataURL(file);
+    } else{
+      this.updateAd();
     }
+  }
+
+  updateAd(): void{
+    this.adsService.updateAd(this.ad.id, this.ad)
+    .subscribe(updated => this.afterUpdate(updated))
   }
 
   afterUpdate(updated: Ad): void{

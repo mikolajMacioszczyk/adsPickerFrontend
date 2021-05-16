@@ -1,8 +1,8 @@
 <div *ngIf="ad" class="content">
-    <form (ngSubmite)="save()" method="POST">
+    <form (ngSubmite)="save(imageInput)" method="POST">
         <div>
             <button mat-raised-button (click)="back()" class="green">Powrót</button>
-            <button mat-raised-button (click)="save()" class="blue">Zapisz</button>
+            <button mat-raised-button (click)="save(imageInput)" class="blue">Zapisz</button>
             <span *ngIf="message == 'success'" class="success message">Zapisano zmiany</span>
             <span *ngIf="message == 'fail'" class="fail message">Upps! Nie udało się zapisać</span>
         </div>
@@ -22,7 +22,7 @@
             </div>
             <div class="input-panel justify-between">
                 <label for="image">Obraz: </label>
-                <input name='image' type="file" accept="image/*" id="image" [(ngModel)]="image">
+                <input name='image' type="file" accept="image/*" id="image" #imageInput>
             </div>
             <br />
             Tagi: 

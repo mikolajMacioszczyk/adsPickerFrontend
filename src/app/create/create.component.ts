@@ -47,8 +47,17 @@ export class CreateComponent{
 
   save(): void{
     if (this.image){
-      this.ad.imagePath = this.imageService.uploadImage(this.image)
+      this.imageService.uploadImage(this.image)
+      .subscribe(path => {
+        this.ad.imagePath = path;
+        this.create();
+      })
+    } else{
+      this.create();
     }
+  }
+
+  create(): void{
     this.adsService.createAd(this.ad)
     .subscribe(isCreated => this.afterCreated(isCreated))
   }
