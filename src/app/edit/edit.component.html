@@ -6,25 +6,43 @@
         </div>
         <br /><br />
         <div class="offseted">
-            <div class="input-panel">
+            <div class="input-panel justify-between">
                 <label for="adId">Id: </label>
                 <input id="adId" [(ngModel)]="ad.id">
             </div>
-            <div class="input-panel">
+            <div class="input-panel justify-between">
                 <label for="title">Tytuł: </label>
                 <input id="title" [(ngModel)]="ad.title">
             </div>
-            <div class="input-panel">
+            <div class="input-panel justify-between">
                 <label for="description">Opis: </label>
                 <input id="description" [(ngModel)]="ad.description">
             </div>
-            <div class="input-panel">
-                <label for="imagePath">Ścieżka zdjęcia: </label>
-                <input id="imagePath" [(ngModel)]="ad.imagePath">
+            <div class="input-panel justify-between">
+                <label for="image">Obraz: </label>
+                <input type="file" accept="image/*" id="image" [(ngModel)]="image">
             </div>
-            <p>Tagi: </p>
+            <br />
+            Tagi: 
             <ul>
-                <li *ngFor="let tag of ad.tags">{{ tag.value }}</li>
+                <li *ngFor="let tag of ad.tags">
+                    <div class="justify-between">
+                        <label for="tag{{tag.id}}">Id: {{ tag.id }} - </label>
+                        <div>
+                            <input id="tag{{tag.id}}" [(ngModel)]="tag.value">
+                            <button class="red tag-button" (click)="removeTag(tag)" >-</button>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="justify-between">
+                        <label for="newTag">Nowy: </label>
+                        <div>
+                            <input id="newTag" [(ngModel)]="newTag.value">
+                            <button class="green tag-button" (click)="adTag()" >+</button>
+                        </div>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>

@@ -7,4 +7,7 @@ export class ImageService {
 
   constructor() { }
 
+  uploadImage(file: File): string{
+    return '';
+  }
 }

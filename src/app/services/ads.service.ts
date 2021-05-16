@@ -7,7 +7,7 @@ import { Ad } from '../models/ad';
 })
 export class AdsService {
   mockAds: Ad[] = [
-    {id: 1, title: 'title1', description: 'desc1', imagePath: 'path1', tags: []}, 
+    {id: 1, title: 'title1', description: 'desc1', imagePath: 'path1', tags: [{id: 1, value: 'tag1', useCount: 1}, {id: 2, value: 'tag2', useCount: 2}]}, 
     {id: 2, title: 'title2', description: 'desc2', imagePath: 'path2', tags: []}, 
     {id: 3, title: 'title3', description: 'desc3', imagePath: 'path3', tags: []} 
   ]

@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { AdsService } from '../services/ads.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Ad } from '../models/ad';
 import { Tag } from '../models/tag';
 import { LoggerService } from '../services/logger.service';
+import { ImageService } from '../services/image.service';
 
 @Component({
   selector: 'app-edit',
@@ -14,9 +15,12 @@ import { LoggerService } from '../services/logger.service';
 export class EditComponent implements OnInit {
   original?: Ad;
   ad?: Ad;
+  newTag: Tag = {id: 0, value: '', useCount: 0};
+  image?: File;
 
   constructor(
     private adsService: AdsService, 
+    private imageService: ImageService,
     private route: ActivatedRoute, 
     private location: Location,
     private loggerService: LoggerService) 
@@ -41,8 +45,26 @@ export class EditComponent implements OnInit {
     this.location.back();
   }
 
+  adTag(): void{
+    if (this.newTag.value){
+      this.ad?.tags.push(this.newTag);
+      this.newTag = {id: 0, value: '', useCount: 0};
+    }
+  }
+
+  removeTag(tag: Tag): void{
+    const index = this.ad?.tags.indexOf(tag);
+    console.log(index);
+    if (index != undefined){
+      this.ad?.tags.splice(index, 1);
+    }
+  }
+
   save(): void{
     if (this.ad){
+      if (this.image){
+        this.ad.imagePath = this.imageService.uploadImage(this.image)
+      }
       this.adsService.updateAd(this.ad.id, this.ad)
       .subscribe(isUpdated => {
         if (!isUpdated){
