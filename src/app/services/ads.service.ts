@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Ad } from '../models/ad';
@@ -6,24 +7,23 @@ import { Ad } from '../models/ad';
   providedIn: 'root'
 })
 export class AdsService {
-  mockAds: Ad[] = [
-    {id: 1, title: 'title1', description: 'desc1', imagePath: 'path1', tags: [{id: 1, value: 'tag1', useCount: 1}, {id: 2, value: 'tag2', useCount: 2}]}, 
-    {id: 2, title: 'title2', description: 'desc2', imagePath: 'path2', tags: []}, 
-    {id: 3, title: 'title3', description: 'desc3', imagePath: 'path3', tags: []} 
-  ]
+  baseUrl: string = 'http://127.0.0.1:5000/api/';
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getAll(): Observable<Ad[]>{
-    return of(this.mockAds);
+  getAll(count: number = 100): Observable<Ad[]>{
+    const url = this.baseUrl + "all?count=" + count;
+    return this.http.get<Ad[]>(url);
   }
 
-  getByQuery(query: string): Observable<Ad[]>{
-    return of(this.mockAds);
+  getByQuery(query: string, lang: string = 'pl', count: number = 100): Observable<Ad[]>{
+    const url = this.baseUrl + "byQuery?query=" + query + "&count=" + count + "&lang=" + lang;
+    return this.http.get<Ad[]>(url);
   }
 
   getById(adId: number): Observable<Ad>{
-    return of(this.mockAds[0]);
+    const url = this.baseUrl + "byId?id=" + adId;
+    return this.http.get<Ad>(url);
   }
 
   updateAd(adId: number, updated: Ad): Observable<boolean>{

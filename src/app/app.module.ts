@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
+import { HttpClientModule } from '@angular/common/http';
 
 import { NavigationComponent } from './navigation/navigation.component';
 import { RouterModule } from '@angular/router';
@@ -30,7 +31,8 @@ import { EditComponent } from './edit/edit.component';
     MatButtonModule,
     MatInputModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
