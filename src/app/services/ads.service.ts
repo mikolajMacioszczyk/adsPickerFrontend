@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Ad } from '../models/ad';
@@ -26,8 +26,11 @@ export class AdsService {
     return this.http.get<Ad>(url);
   }
 
-  updateAd(adId: number, updated: Ad): Observable<boolean>{
-    return of(true);
+  updateAd(adId: number, updated: Ad): Observable<Ad>{
+    const url = this.baseUrl + "update?id=" + adId;
+    const body = JSON.stringify(updated);
+    const headers = { 'content-type': 'application/json'} 
+    return this.http.post<Ad>(url, updated, {headers: headers});
   }
 
   createAd(created: Ad): Observable<boolean>{

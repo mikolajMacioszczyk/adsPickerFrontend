@@ -17,6 +17,7 @@ export class EditComponent implements OnInit {
   ad?: Ad;
   newTag: Tag = {id: 0, value: '', useCount: 0};
   image?: File;
+  message: string = '';
 
   constructor(
     private adsService: AdsService, 
@@ -66,12 +67,16 @@ export class EditComponent implements OnInit {
         this.ad.imagePath = this.imageService.uploadImage(this.image)
       }
       this.adsService.updateAd(this.ad.id, this.ad)
-      .subscribe(isUpdated => {
-        if (!isUpdated){
-          this.loggerService.adLog(`EditComponent: cannot edit ad with id=${this.ad?.id}`)
-        }
-        this.back();
-      })
+      .subscribe(updated => this.afterUpdate(updated))
+    }
+  }
+
+  afterUpdate(updated: Ad): void{
+    if (!updated){
+      this.loggerService.adLog(`EditComponent: cannot edit ad with id=${this.ad?.id}`);
+      this.message = 'fail';
+    } else{
+      this.message = 'success';
     }
   }
 }
