@@ -32,10 +32,10 @@ export class AdsService {
     return this.http.post<Ad>(url, updated, {headers: headers});
   }
 
-  createAd(created: Ad): Observable<boolean>{
+  createAd(created: Ad): Observable<Ad>{
     const url = this.baseUrl + "create";
     const headers = { 'content-type': 'application/json'} 
-    return this.http.post<boolean>(url, created, {headers: headers});
+    return this.http.post<Ad>(url, created, {headers: headers});
   }
 
   removeAd(adId: number): Observable<boolean>{

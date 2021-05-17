@@ -5,6 +5,7 @@ import { Ad } from '../models/ad';
 import { Tag } from '../models/tag';
 import { LoggerService } from '../services/logger.service';
 import { ImageService } from '../services/image.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create',
@@ -22,7 +23,8 @@ export class CreateComponent{
     private adsService: AdsService, 
     private imageService: ImageService,
     private location: Location,
-    private loggerService: LoggerService) 
+    private loggerService: LoggerService,
+    private router: Router) 
     { }
 
   back(): void {
@@ -45,13 +47,20 @@ export class CreateComponent{
     }
   }
 
-  save(): void{
-    if (this.image){
-      this.imageService.uploadImage(this.image)
-      .subscribe(path => {
-        this.ad.imagePath = path;
-        this.create();
-      })
+  save(imageInput: any): void{
+    if (imageInput.files.length){
+      const file: File = imageInput.files[0];
+      const reader = new FileReader();
+
+      reader.addEventListener('load', (event: any) => {
+        this.imageService.uploadImage(file)
+        .subscribe(path => {
+          this.ad.imagePath = path;
+          this.create();
+        })
+      });
+
+      reader.readAsDataURL(file);
     } else{
       this.create();
     }
@@ -59,16 +68,16 @@ export class CreateComponent{
 
   create(): void{
     this.adsService.createAd(this.ad)
-    .subscribe(isCreated => this.afterCreated(isCreated))
+    .subscribe(created => this.afterCreated(created))
   }
 
-  afterCreated(isCreated: boolean): void{
-    if (!isCreated){
+  afterCreated(created: Ad): void{
+    if (!created){
       this.loggerService.adLog(`EditComponent: cannot edit ad with id=${this.ad?.id}`);
       this.failed = true;
     } else{
       this.failed = false;
-      this.back();
+      this.router.navigate(['/edit', created.id]);
     }
   }
 }
