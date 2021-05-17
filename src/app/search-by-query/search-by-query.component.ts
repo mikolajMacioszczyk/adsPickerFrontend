@@ -12,13 +12,14 @@ import { MatFormField } from '@angular/material/form-field';
 export class SearchByQueryComponent {
   ads: Ad[] = [];
   lang = new FormControl('pl');
+  count = new FormControl('1');
   query: string = '';
 
 
   constructor(private adsService: AdsService) { }
 
   search(): void{
-    this.adsService.getByQuery(this.query, this.lang.value)
+    this.adsService.getByQuery(this.query, this.lang.value, this.count.value)
     .subscribe(results => this.ads = results);
   }
 }

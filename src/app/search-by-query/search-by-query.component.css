@@ -31,7 +31,14 @@ th, td{
 }
 
 .custom-select {
-    width: 130px;
     margin-right: 20px;
     font-size: small;
+}
+
+.string-select{
+    width: 130px;
+}
+
+.numer-select{
+    width: 80px;
 }
