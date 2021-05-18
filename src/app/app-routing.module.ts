@@ -5,6 +5,7 @@ import { CreateComponent } from './create/create.component';
 import { DetailsComponent } from './details/details.component';
 import { EditComponent } from './edit/edit.component';
 import { SearchByQueryComponent } from './search-by-query/search-by-query.component';
+import { ExampleComponent } from './example/example.component';
 
 const routes: Routes = [
   {path: 'all', component: AllAdsComponent},
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'edit/:id', component: EditComponent},
   {path: 'create', component: CreateComponent},
   {path: 'search', component: SearchByQueryComponent},
+  {path: 'example', component: ExampleComponent},
   {path: '', component: AllAdsComponent},
 ];
 

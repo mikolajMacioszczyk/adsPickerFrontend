@@ -1,0 +1,54 @@
+img {
+    object-fit: cover;
+    width: 400px;
+    height: auto;
+}
+
+.content {
+display: flex;
+justify-content: space-between;
+font-size: larger;
+border: 1px solid black;
+border-radius: 5px;
+margin: 10px 0;
+}
+
+.description{
+    margin: 10px;
+    width: 500px;
+}
+
+.search-panel {
+display: flex;
+justify-content: space-between;
+}
+
+/* colors */
+
+.red{
+    color: red;
+}
+
+.yellow{
+    color: rgb(248, 194, 17);
+}
+
+.light-blue{
+    color: rgb(0, 185, 241);
+}
+
+.blue {
+    color: blue;
+}
+
+.green{
+    color: rgb(0, 202, 0);
+}
+
+.purple{
+    color: purple;
+}
+
+.brown{
+    color: brown;
+}

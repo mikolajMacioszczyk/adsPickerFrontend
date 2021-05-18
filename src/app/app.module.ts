@@ -18,6 +18,7 @@ import { EditComponent } from './edit/edit.component';
 import { CreateComponent } from './create/create.component';
 import { SearchByQueryComponent } from './search-by-query/search-by-query.component';
 import {MatSelectModule} from '@angular/material/select';
+import { ExampleComponent } from './example/example.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import {MatSelectModule} from '@angular/material/select';
     EditComponent,
     CreateComponent,
     SearchByQueryComponent,
+    ExampleComponent,
   ],
   imports: [
     BrowserModule,

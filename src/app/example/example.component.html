@@ -1,0 +1,35 @@
+<h1>Przykład działania wyszukiwarki reklam dla oferty gastronomicznej</h1>
+
+<div>Proposed inquiries:</div>
+<p>I'm looking for a spicy meat dish</p>
+
+<div>Proponowane zapytania:</div>
+
+
+<br />
+<div class="search-panel">
+    <h2>Skonfigurowane reklamy: </h2>
+
+    <mat-form-field appearance="fill">
+    <mat-label>Wybierz Kuchnię</mat-label>
+    <mat-select [formControl]="kitchen" (selectionChange)="selectionChanges()">
+        <mat-option value="all">Wszystkie</mat-option>
+        <mat-option value="american">Amerykańska</mat-option>
+        <mat-option value="italian">Włoska</mat-option>
+        <mat-option value="oriental">Orientalna</mat-option>
+        <mat-option value="polish">Polska</mat-option>
+        <mat-option value="breakfast">Śniadaniowa</mat-option>
+    </mat-select>
+    </mat-form-field>
+</div>
+<div *ngFor="let ad of ads; index as i" class="content">
+    <img *ngIf="i % 2 == 1" src="{{ad.imagePath}}" alt="{{ad.title}}" >
+    <div class="description">
+        <p>{{ ad.description }}</p>
+        <div *ngIf="ad.tags.length">
+            <span>Tagi: </span>
+            <span *ngFor="let tag of ad.tags" [ngClass]="getColor(tag.value)">&nbsp;&nbsp; {{ tag.value }} &nbsp;&nbsp;</span>
+        </div>
+    </div>
+    <img *ngIf="i % 2 == 0" src="{{ad.imagePath}}" alt="{{ad.title}}" >
+</div>
