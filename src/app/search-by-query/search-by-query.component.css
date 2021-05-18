@@ -13,17 +13,29 @@
     color: white;
 }
 
-th, td{
-    width: 240px;
-    padding: 10px;
-    text-align: center;
-    font-size: large;
-    border-bottom: 1px solid #00CCAA;
+img {
+    object-fit: cover;
+    width: 400px;
+    height: auto;
 }
 
-.small-button{
-    margin: 3px;
-    width: 70px;
+.content {
+display: flex;
+justify-content: space-between;
+font-size: larger;
+border: 1px solid black;
+border-radius: 5px;
+margin: 10px 0;
+}
+
+.description{
+    margin: 10px;
+    width: 500px;
+}
+
+.search-panel {
+display: flex;
+justify-content: space-between;
 }
 
 .blue{

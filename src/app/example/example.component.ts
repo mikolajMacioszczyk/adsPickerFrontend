@@ -43,25 +43,32 @@ export class ExampleComponent implements OnInit {
     switch (value){
       case 'american': case 'amerykańska': case 'italian':case 'włoska':case 'polish':case 'polska':case 'oriental':case 'orientalna':
         return 'light-blue';
-      case 'fast-food':case 'breakfast': case 'śniadani':case 'obiad':case 'dinner':case 'deser':case 'dessert':
+      case 'fast-food':case 'fast':case 'breakfast': case 'śniadanie':case 'obiad':case 'dinner':case 'deser':case 'dessert':
+      case 'przekąska': case 'snack': case 'main': case 'główne': case 'sos': case 'sauce': case 'appetizer': case 'przystawka':
         return 'yellow';
-      case 'meat':case 'mięso':case 'beef':case 'wołowina':case 'kurczak': case 'chicken':case 'schabowi':case 'wieprzowina':case 'pork':
-      case 'egg':case 'jajka':case 'ser':case 'chees': case 'ryż':case 'rice':case 'ziemniaki': case 'potato':case 'makaron':case 'pasta':
+      case 'meat':case 'mięso':case 'beef':case 'wołowina':case 'kurczak': case 'chicken':case 'schabowy':case 'wieprzowina':case 'pork':
+      case 'eggs':case 'jajka':case 'ser':case 'cheese': case 'chees': case 'ryż':case 'rice':case 'ziemniaki': case 'potatoes':
+      case 'makaron':case 'pasta': case 'fish': case 'ryba': case 'salmon': case 'łosoś':
         return 'red';
-      case 'bean': case 'fasola': case 'banan': case 'banana': case 'pomidori': case 'tomato': case 'kapusta':
-      case 'cabbag': case 'grzybi': case 'mushroom': case 'mak': case 'poppi': case 'oliwa': case 'oil':
+      case 'bean': case 'fasola': case 'banan': case 'banana': case 'pomidory': case 'tomatoes': case 'kapusta': case 'cebula': case 'onion':
+      case 'cabbage': case 'grzyby': case 'mushrooms': case 'mak': case 'poppy': case 'oliwa': case 'oil':
         return 'green';
 
-      case 'burger':case 'burrito':case 'naleśnik':case 'naleśniki': case 'pancak': case 'pancake':case 'jajecznica':case 'scrambl':case 'kanapki':
-      case 'sandwich':case 'pizza':case 'risotto':case 'spaghetti': case 'spagetti':case 'drożdżówka':case 'bun':case 'kopytka':
-      case 'hoov':case 'kluski': case 'noodl': case 'pierogi': case 'dumpl':case 'chop': case 'kotlet':
+      case 'burger':case 'burrito':case 'naleśnik':case 'naleśniki': case 'pancak': case 'pancakes':case 'jajecznica':case 'scrambled':case 'kanapki':
+      case 'sandwich': case 'sandwiches':case 'pizza':case 'risotto':case 'spaghetti': case 'spagetti':case 'drożdżówka':case 'bun':case 'kopytka':
+      case 'hooves':case 'kluski': case 'noodles': case 'pierogi': case 'dumplings':case 'chop': case 'kotlet': case 'vegetables': case 'warzywa': 
+      case 'marmalade': case 'marmolada': case 'paprica': case 'papryka':
+        return 'olive';
+
+      case 'loaf': case 'bułka': case 'tortilla': case 'bread':case 'bake': case 'baking': case 'pieczywo': case 'dough': case 'ciasto':
+        return 'brown';
+
+      case 'ciepło':case 'hot':case 'cold': case 'zimno':
         return 'blue';
 
-      case 'loaf': case 'bułka': case 'tortilla': case 'bread':case 'bake': case 'dough': case 'ciasto':
-        return 'brown';
       default:
         return 'purple';
-    }
+      }
   }
 
 }

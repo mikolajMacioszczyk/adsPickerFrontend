@@ -29,21 +29,14 @@
     <button mat-raised-button class="green" (click)="search()">Wyszukaj</button>
 </div>
 
-<div *ngIf="ads.length">
-    <table>
-        <tr>
-            <th>Numer</th>
-            <th>Tytuł</th>
-            <th>Opis</th>
-            <th>Akcje</th>
-        </tr>
-        <tr *ngFor="let ad of ads">
-            <td>{{ad.id}}</td>
-            <td>{{ad.title}}</td>
-            <td>{{ad.description}}</td>
-            <td>
-                <a class="green small-button" mat-raised-button routerLink='/details/{{ad.id}}'>Detale</a>
-            </td>
-        </tr>
-    </table>
+<div *ngFor="let ad of ads; index as i" class="content">
+    <img *ngIf="i % 2 == 1" src="{{ad.imagePath}}" alt="{{ad.title}}" >
+    <div class="description">
+        <h2>{{ ad.description }}</h2>
+        <div *ngIf="ad.tags.length">
+            <span>Tagi: </span>
+            <span *ngFor="let tag of ad.tags">&nbsp;&nbsp; {{ tag.value }} &nbsp;&nbsp;</span>
+        </div>
+    </div>
+    <img *ngIf="i % 2 == 0" src="{{ad.imagePath}}" alt="{{ad.title}}" >
 </div>
