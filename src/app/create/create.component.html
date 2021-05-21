@@ -2,8 +2,9 @@
     <form (ngSubmite)="save(imageInput)" method="POST">
         <div>
             <button mat-raised-button (click)="back()" class="green">Powrót</button>
-            <button mat-raised-button (click)="save(imageInput)" class="blue">Zapisz</button>
-            <span *ngIf="failed" class="fail message">Upps! Nie udało się zapisać</span>
+            <button mat-raised-button [disabled]="message == 'waiting'" (click)="save(imageInput)" class="blue">Zapisz</button>
+            <span *ngIf="message == 'waiting'" class="success message">Proszę czekać, zapisujemy zmiany</span>
+            <span *ngIf="message == 'fail'" class="fail message">Upps! Nie udało się zapisać</span>
         </div>
         <br /><br />
         <div class="offseted">
@@ -33,7 +34,10 @@
                 </li>
                 <li>
                     <div class="justify-between">
-                        <label for="newTag">Nowy: </label>
+                        <mat-radio-group name="flavors">
+                            <mat-radio-button color="primary" value="en" checked="true" (change)="langChanged('en')">English</mat-radio-button>
+                            <mat-radio-button color="primary" value="pl" (change)="langChanged('pl')">Polski</mat-radio-button>
+                        </mat-radio-group>
                         <div>
                             <input name='newTag' id="newTag" [(ngModel)]="newTag.value">
                             <button class="green tag-button" (click)="adTag()" >+</button>

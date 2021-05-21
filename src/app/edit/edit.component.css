@@ -1,11 +1,15 @@
 img {
     object-fit: cover;
-    max-width: 500px;
+    max-width: 400px;
     height: 100%;
 }
 
 input{
     margin-left: 130px;
+}
+
+.mat-radio-button {
+    margin-left: 10px;
 }
 
 .blue{

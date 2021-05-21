@@ -22,8 +22,9 @@ export class ExampleComponent implements OnInit {
   private retrieveAds(): void{
     this.adsService.getAll()
     .subscribe(ads => {
+      console.log(ads);
       this.allAds = ads.filter(tag => tag.tags.find(t => 
-      t.value == 'american' || t.value == 'italian' || t.value == 'breakfast' || t.value == 'polish' || t.value == 'oriental'));
+      t.value == 'american' || t.value == 'italian' || t.value == 'breakfast' || t.value == 'polish' || t.value == 'oriental' || t.value == 'dessert'));
       this.ads = this.allAds;
     });
   }

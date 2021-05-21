@@ -24,6 +24,7 @@ export class EditComponent implements OnInit {
   newTag: Tag = {id: 0, value: '', useCount: 0};
   image?: File;
   message: string = '';
+  private lang: string = 'en';
   private nextId: number = 0;
 
   constructor(
@@ -58,6 +59,7 @@ export class EditComponent implements OnInit {
 
   adTag(): void{
     if (this.newTag.value){
+      this.newTag.lang = this.lang;
       this.ad?.tags.push(this.newTag);
       this.nextId = this.nextId + 1;
       this.newTag = {id: this.nextId, value: '', useCount: 0};
@@ -72,7 +74,12 @@ export class EditComponent implements OnInit {
     }
   }
 
+  langChanged(newLang: string): void{
+    this.lang = newLang;
+  }
+
   save(imageInput: any): void{
+    this.message = 'waiting';
     if (imageInput.files.length){
       const file: File = imageInput.files[0];
       const reader = new FileReader();

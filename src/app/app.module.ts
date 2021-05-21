@@ -19,6 +19,7 @@ import { CreateComponent } from './create/create.component';
 import { SearchByQueryComponent } from './search-by-query/search-by-query.component';
 import {MatSelectModule} from '@angular/material/select';
 import { ExampleComponent } from './example/example.component';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ExampleComponent } from './example/example.component';
     RouterModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

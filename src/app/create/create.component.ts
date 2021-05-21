@@ -6,6 +6,7 @@ import { Tag } from '../models/tag';
 import { LoggerService } from '../services/logger.service';
 import { ImageService } from '../services/image.service';
 import { Router } from '@angular/router';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-create',
@@ -15,9 +16,10 @@ import { Router } from '@angular/router';
 export class CreateComponent{
   private id: number = 0;
   ad: Ad = {id: 0, title: '', description: '', imagePath: '', tags: []}
-  newTag: Tag = {id: 0, value: '', useCount: 0};
+  newTag: Tag = {id: 0, value: '', useCount: 0, lang: 'en'};
   image?: File;
-  failed: boolean = false;
+  message: string = '';
+  private lang: string = 'en';
 
   constructor(
     private adsService: AdsService, 
@@ -33,9 +35,10 @@ export class CreateComponent{
 
   adTag(): void{
     if (this.newTag.value){
+      this.newTag.lang = this.lang;
       this.ad?.tags.push(this.newTag);
       this.id = this.id + 1;
-      this.newTag = {id: this.id, value: '', useCount: 0};
+      this.newTag = {id: this.id, value: '', useCount: 0, lang: this.lang};
     }
   }
 
@@ -48,6 +51,7 @@ export class CreateComponent{
   }
 
   save(imageInput: any): void{
+    this.message = 'waiting';
     if (imageInput.files.length){
       const file: File = imageInput.files[0];
       const reader = new FileReader();
@@ -66,6 +70,10 @@ export class CreateComponent{
     }
   }
 
+  langChanged(newLang: string): void{
+    this.lang = newLang;
+  }
+
   create(): void{
     this.adsService.createAd(this.ad)
     .subscribe(created => this.afterCreated(created))
@@ -74,9 +82,9 @@ export class CreateComponent{
   afterCreated(created: Ad): void{
     if (!created){
       this.loggerService.adLog(`EditComponent: cannot edit ad with id=${this.ad?.id}`);
-      this.failed = true;
+      this.message = 'fail';
     } else{
-      this.failed = false;
+      this.message = 'success';
       this.router.navigate(['/edit', created.id]);
     }
   }

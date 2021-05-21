@@ -6,6 +6,10 @@ input{
     margin-left: 130px;
 }
 
+.mat-radio-button {
+    margin-left: 20px;
+}
+
 .blue{
     background-color: #54DEFD;
 }
