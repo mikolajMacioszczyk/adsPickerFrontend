@@ -23,6 +23,15 @@ display: flex;
 justify-content: space-between;
 }
 
+.row{
+    display: flex;
+    justify-content:space-around;
+}
+
+.header{
+    text-align: center;
+}
+
 /* colors */
 
 .red{
