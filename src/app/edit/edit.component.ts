@@ -21,7 +21,7 @@ class ImageSnippet {
 export class EditComponent implements OnInit {
   original?: Ad;
   ad: Ad = {id: 0, title: '', description: '', imagePath: '', tags: []};
-  newTag: Tag = {id: 0, value: '', useCount: 0};
+  newTag: Tag = {id: 0, value: '', useCount: 0, lang: 'en'};
   image?: File;
   message: string = '';
   private lang: string = 'en';
@@ -45,7 +45,7 @@ export class EditComponent implements OnInit {
     .subscribe(ad => {
       this.original = ad;
       const copyTags: Tag[] = [];
-      ad.tags.forEach(tag => copyTags.push({id: tag.id, value: tag.value, useCount: tag.useCount}));
+      ad.tags.forEach(tag => copyTags.push({id: tag.id, value: tag.value, useCount: tag.useCount, lang: tag.lang}));
       this.ad = {id: ad.id, title: ad.title, description: ad.description, imagePath: ad.imagePath, tags: copyTags};
       if (this.ad?.tags){
         this.nextId = Math.max.apply(Math, this.ad?.tags.map(function(t){return t.id;}))
@@ -62,7 +62,7 @@ export class EditComponent implements OnInit {
       this.newTag.lang = this.lang;
       this.ad?.tags.push(this.newTag);
       this.nextId = this.nextId + 1;
-      this.newTag = {id: this.nextId, value: '', useCount: 0};
+      this.newTag = {id: this.nextId, value: '', useCount: 0, lang: 'en'};
     }
   }
 
